@@ -1,0 +1,566 @@
+/* Fonts and Colours */
+@font-face {
+  font-family: "opensaucesans-regular";
+  src: url("https://raw.githubusercontent.com/riyadirenno/portfolio/master/fonts/opensaucesans-regular.ttf");
+}
+@font-face {
+  font-family: "monocode-regular";
+  src: url("https://raw.githubusercontent.com/riyadirenno/portfolio/master/fonts/monocode-regular.ttf");
+}
+:root {
+  --bg-color: rgb(24, 25, 35);
+  --card-color: rgb(23, 23, 23);
+  --header-colour: rgba(255, 255, 255, 0);
+  --renno-blue: rgb(158, 211, 222);
+  --renno-neon: rgb(213, 234, 5);
+  --renno-neon-shade: rgb(152, 163, 0);
+  --renno-white: rgb(255, 255, 255);
+  --renno-link: rgb(210, 210, 210);
+  --renno-alt-text-1: rgb(195, 195, 195);
+  --renno-alt-text-2: rgb(162, 162, 162);
+  --renno-moon: rgb(42, 44, 51);
+  --renno-shade: rgb(30, 30, 30);
+  --renno-dark: rgb(33, 33, 38);
+  --linkedin: rgb(0, 119, 181);
+  --github: rgb(110, 84, 148);
+  --vimeo: rgb(26, 183, 234);
+  --readcv: rgb(255, 241, 130);
+}
+
+/* Global Settings */
+
+body {
+  background-color: #111927;
+  background-image: radial-gradient(
+      at 47% 33%,
+      hsl(234.55, 19%, 12%) 0,
+      transparent 59%
+    ),
+    radial-gradient(at 82% 65%, hsl(218, 39%, 11%) 0, transparent 55%);
+  font-family: opensaucesans-regular, -apple-system, BlinkMacSystemFont,
+    helvetica, sans-serif;
+  line-height: 175%;
+  font-weight: 300;
+  color: #ffffff;
+  margin: 0;
+}
+h1 {
+  font-size: 1.7em;
+  line-height: 130%;
+  font-weight: 400;
+}
+h2 {
+  font-size: 1.5em;
+  line-height: 130%;
+  font-weight: 400;
+}
+h3 {
+  font-size: 1.2em;
+  line-height: 130%;
+  font-weight: 400;
+  color: var(--renno-alt-text-2);
+}
+a {
+  text-decoration: none;
+  color: var(--renno-link);
+  display: inline-block;
+  position: relative;
+}
+a:hover {
+  color: var(--renno-blue);
+  transition: 0.25s ease;
+}
+a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #9ed4de;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  margin: 0 0 -0.2em 0;
+}
+a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+a:hover .svg-renno-blue path {
+  fill: var(--renno-blue);
+  transition: 0.25s ease;
+}
+a:hover .svg-renno-neon path {
+  fill: var(--renno-neon-shade);
+  transition: 0.25s ease;
+}
+
+/* SVG */
+
+.icon {
+  display: inline-flex;
+  align-self: center;
+}
+
+.icon svg,
+.icon img {
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+}
+
+.icon.baseline svg,
+.icon img {
+  top: 0.125em;
+  position: relative;
+}
+
+.icon-exit-padding {
+  padding: 0 0 0 0.25em;
+}
+
+.icon-exit-padding-inv {
+  padding: 0 0.25em 0 0;
+}
+
+/* Header and Navigation */
+
+header {
+  position: fixed;
+  width: 100%;
+  background: var(--header-colour);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1em);
+  -webkit-backdrop-filter: blur(1em);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  z-index: 2;
+}
+nav li,
+ul {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+.navigation-wrapper {
+  padding: 0 1em 0 1em;
+}
+.navigation-child {
+  padding: 1em 0 1em 0;
+}
+.navigation-gridlines {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 1.5em;
+}
+.navigation-nav {
+  grid-area: 1 / 1 / 2 / 7;
+}
+.navigation-timezones {
+  grid-area: 1 / 7 / 2 / 11;
+}
+.navigation-resume {
+  grid-area: 1 / 11 / 2 / 13;
+}
+.navigation-padding {
+  padding: 0 0 0 1.5em;
+}
+.logo-email-scroll a {
+  color: var(--renno-white);
+}
+.logo-email-scroll a:hover {
+  color: var(--renno-blue);
+}
+a:hover .logo-email-scroll svg path {
+  fill: var(--github);
+  transition: 0.25s ease;
+}
+.navigation-timezones {
+  padding: 1em 0 1em 0;
+}
+.navigation-resume {
+  padding: 1em 0 1em 0;
+  text-align: right;
+}
+.navigation-resume a {
+  color: var(--renno-neon);
+}
+.navigation-timezones {
+  font-family: monospace-regular, monospace;
+}
+.timezones-inline {
+  display: inline;
+}
+.its-sunrise li div .navigation-sun-moon circle {
+  fill: var(--renno-sun);
+}
+
+/* Navigation Transitions */
+
+.navigation-resume:hover {
+  color: var(--renno-neon-shade);
+  transition: 0.3s ease;
+}
+.hover-renno-blue-logo {
+  display: inline-block;
+  position: relative;
+}
+.hover-renno-blue-logo a:hover {
+  transition: 0.25s ease;
+}
+.hover-renno-blue-logo a:hover {
+  color: #var(--renno-blue);
+}
+.hover-renno-blue-logo::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--renno-blue);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  margin: 0 0 -0.2em 0;
+}
+.hover-renno-blue-logo:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.navigation-resume a:hover {
+  color: var(--renno-neon-shade);
+  transition: 0.25 ease;
+}
+.navigation-resume a {
+  display: inline-block;
+  position: relative;
+}
+.navigation-resume a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--renno-neon-shade);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  margin: 0 0 -0.2em 0;
+}
+.navigation-resume a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Hero */
+
+.hero {
+  padding: 7em 0 7em 0;
+}
+.hero-wrapper {
+  padding: 1em;
+}
+.hero-gridlines {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 1.5em;
+}
+.hero-content {
+  grid-area: 1 / 5 / 2 / 12;
+}
+
+/* Showreel */
+
+.showreel {
+}
+.showreel-wrapper {
+  padding: 1em;
+}
+.showreel-gridlines {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 1.5em;
+}
+.showreel-video {
+  grid-area: 1 / 1 / 2 / 13;
+}
+.showreel-external {
+  grid-area: 1 / 9 / 2 / 12;
+}
+.showreel-external p a:hover {
+  color: #1ab7ea;
+  transition: 0.25s ease;
+}
+.showreel-external p a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #1ab7ea;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  margin: 0 0 -0.2em 0;
+}
+.showreel-external p a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Case Studies */
+
+.case-studies-wrapper {
+  padding: 1em;
+}
+.case-studies-gridlines {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 1.5em;
+}
+.case-studies-fineprint {
+  grid-area: 1 / 2 / 2 / 12;
+  font-size: 0.8em;
+  font-family: monospace-regular, monospace;
+  color: var(--renno-alt-text-2);
+}
+.case-studies-copy {
+  grid-area: 2 / 2 / 3 / 9;
+}
+
+/* Companies Section */
+
+.companies-wrapper {
+  padding: 1em;
+}
+.companies-gridlines {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 1.5em;
+}
+.companies-copy {
+  grid-area: 1 / 3 / 2 / 10;
+}
+
+/* About Me Section */
+
+.about-wrapper {
+  padding: 1em;
+}
+.about-gridlines {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 1.5em;
+}
+.about-copy {
+  grid-area: 1 / 5 / 2 / 11;
+}
+
+/* Footer */
+
+.footer-wrapper {
+  padding: 1em;
+}
+.footer-gridlines {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 1.5em;
+}
+.footer-v-padding {
+  padding: 3em 0 0 0;
+}
+
+#about-image-frame {
+  width: 300px;
+  height: 450px;
+  transition: transform 200ms;
+
+  &:hover {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+}
+
+#about-image-card {
+  width: 100%;
+  height: 100%;
+  border-radius: 9px;
+  background-image: url("https://djjjk9bjm164h.cloudfront.net/background3.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition-duration: 250ms;
+  transition-property: transform, box-shadow;
+  transition-timing-function: ease-out;
+}
+
+/* Footer - Mail Section */
+
+.footer-mail {
+  grid-area: 1 / 1 / 2 / 7;
+}
+
+/* Footer - Social Section */
+
+.footer-social {
+  grid-area: 1 / 7 / 2 / 13;
+  text-align: right;
+}
+.footer-social-padding {
+  padding: 0 1.5em 0 0;
+}
+.footer-social a {
+  color: var(--renno-white);
+}
+/*LinkedIn*/
+.linkedin:hover {
+  color: var(--linkedin);
+  transition: 0.25s ease;
+}
+.linkedin::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--linkedin);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  margin: 0 0 -0.2em 0;
+}
+a .linkedin :hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+a:hover .svg-linkedin path {
+  fill: var(--linkedin);
+  transition: 0.25s ease;
+}
+/*Github*/
+.github:hover {
+  color: var(--github);
+  transition: 0.25s ease;
+}
+.github::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #6e5494;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  margin: 0 0 -0.2em 0;
+}
+a .github :hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+a:hover .svg-github path {
+  fill: var(--github);
+  transition: 0.25s ease;
+}
+/*Vimeo*/
+.vimeo:hover {
+  color: var(--vimeo);
+  transition: 0.25s ease;
+}
+.vimeo::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--vimeo);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  margin: 0 0 -0.2em 0;
+}
+a .vimeo :hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+a:hover .svg-vimeo path {
+  fill: var(--vimeo);
+  transition: 0.25s ease;
+}
+/* Read.CV*/
+.read-cv:hover {
+  color: var(--readcv);
+  transition: 0.25s ease;
+}
+.read-cv::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff182;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  margin: 0 0 -0.2em 0;
+}
+a .read-cv :hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+a:hover .svg-read-cv path {
+  fill: var(--readcv);
+  transition: 0.25s ease;
+}
+
+/* Footer - Copy Section */
+
+.footer-copy {
+  grid-area: 2 / 1 / 3 / 8;
+  font-size: 0.8em;
+  line-height: 150%;
+}
+.footer-copy p {
+  margin: 0;
+  padding: 0;
+}
+.footer-copy ul,
+li {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+.renno-tobawlabout {
+  padding: 0 0 0 2em;
+  color: var(--renno-alt-text-2);
+}
+
+/* Footer - Scroll Section */
+.footer-scroll {
+  grid-area: 2 / 8 / 3 / 13;
+  display: flex;
+  align-items: flex-end;
+  justify-content: right;
+}
+.logo-email-scroll a:hover {
+  fill: var(--renno-blue);
+  transition: 0.25s ease;
+}
+a:hover .scroll-top path {
+  fill: var(--renno-blue);
+  transition: 0.25s ease;
+}
+
+/* Media Queries */
