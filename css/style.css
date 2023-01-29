@@ -556,7 +556,7 @@ a:hover .logo-email-scroll svg path {
   height: 550px;
   box-shadow: 0 2px 4px #000000;
   border-radius: 1em;
-  background-image: url(/img/about/renno-photo-1.jpg);
+  background-image: url(img/about/renno-photo-1.jpg);
   background-size: cover;
   position: relative;
   transition-duration: 300ms;
