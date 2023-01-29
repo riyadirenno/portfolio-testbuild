@@ -8,7 +8,9 @@
   src: url("https://raw.githubusercontent.com/riyadirenno/portfolio/master/fonts/monocode-regular.ttf");
 }
 :root {
-  --bg-color: rgb(24, 25, 35);
+  --bg-color: rgb(8, 12, 23);
+  --bg-color-gradient: rgb(4, 8, 20);
+  --bg-color-border: rgb(12, 14, 35);
   --card-color: rgb(23, 23, 23);
   --header-colour: rgba(255, 255, 255, 0);
   --renno-blue: rgb(158, 211, 222);
@@ -18,6 +20,7 @@
   --renno-link: rgb(210, 210, 210);
   --renno-alt-text-1: rgb(195, 195, 195);
   --renno-alt-text-2: rgb(162, 162, 162);
+  --renno-sun: rgb(255, 241, 130);
   --renno-moon: rgb(42, 44, 51);
   --renno-shade: rgb(30, 30, 30);
   --renno-dark: rgb(33, 33, 38);
@@ -29,34 +32,62 @@
 
 /* Global Settings */
 
+html {
+  min-height: 100%; /* make sure it is at least as tall as the viewport */
+  position: relative;
+}
+
 body {
-  background-color: #111927;
-  background-image: radial-gradient(
-      at 47% 33%,
-      hsl(234.55, 19%, 12%) 0,
-      transparent 59%
-    ),
-    radial-gradient(at 82% 65%, hsl(218, 39%, 11%) 0, transparent 55%);
+  background: radial-gradient(
+    circle,
+    var(--bg-color) 33%,
+    var(--bg-color-gradient) 100%
+  );
+  background-color: var(--bg-color);
+  height: 100vh;
+  background-size: 200% 200%;
+  animation: gradient 60s ease infinite;
+  animation-direction: alternate;
   font-family: opensaucesans-regular, -apple-system, BlinkMacSystemFont,
     helvetica, sans-serif;
   line-height: 175%;
   font-weight: 300;
   color: #ffffff;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+p,
+h1,
+h2,
+h3 {
   margin: 0;
 }
 h1 {
   font-size: 1.7em;
-  line-height: 130%;
+  line-height: 150%;
   font-weight: 400;
 }
 h2 {
   font-size: 1.5em;
-  line-height: 130%;
+  line-height: 150%;
   font-weight: 400;
 }
 h3 {
   font-size: 1.2em;
-  line-height: 130%;
+  line-height: 150%;
   font-weight: 400;
   color: var(--renno-alt-text-2);
 }
@@ -94,6 +125,155 @@ a:hover .svg-renno-blue path {
 a:hover .svg-renno-neon path {
   fill: var(--renno-neon-shade);
   transition: 0.25s ease;
+}
+
+.css-grids-border-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+.background-guidelines {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr;
+  width: 100%;
+  height: 100%;
+}
+.grid-1 {
+  grid-area: 1 / 1 / 2 / 2;
+  border-left: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-right: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-image: linear-gradient(
+      to bottom,
+      var(--bg-color-border),
+      var(--bg-color)
+    )
+    1;
+}
+.grid-2 {
+  grid-area: 1 / 2 / 2 / 3;
+  border-left: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-right: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-image: linear-gradient(
+      to bottom,
+      var(--bg-color-border),
+      var(--bg-color)
+    )
+    1;
+}
+.grid-3 {
+  grid-area: 1 / 3 / 2 / 4;
+  border-left: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-right: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-image: linear-gradient(
+      to bottom,
+      var(--bg-color-border),
+      var(--bg-color)
+    )
+    1;
+}
+.grid-4 {
+  grid-area: 1 / 4 / 2 / 5;
+  border-left: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-right: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-image: linear-gradient(
+      to bottom,
+      var(--bg-color-border),
+      var(--bg-color)
+    )
+    1;
+}
+.grid-5 {
+  grid-area: 1 / 5 / 2 / 6;
+  border-left: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-right: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-image: linear-gradient(
+      to bottom,
+      var(--bg-color-border),
+      var(--bg-color)
+    )
+    1;
+}
+.grid-6 {
+  grid-area: 1 / 6 / 2 / 7;
+  border-left: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-right: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-image: linear-gradient(
+      to bottom,
+      var(--bg-color-border),
+      var(--bg-color)
+    )
+    1;
+}
+.grid-7 {
+  grid-area: 1 / 7 / 2 / 8;
+  border-left: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-right: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-image: linear-gradient(
+      to bottom,
+      var(--bg-color-border),
+      var(--bg-color)
+    )
+    1;
+}
+.grid-8 {
+  grid-area: 1 / 8 / 2 / 9;
+  border-left: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-right: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-image: linear-gradient(
+      to bottom,
+      var(--bg-color-border),
+      var(--bg-color)
+    )
+    1;
+}
+.grid-9 {
+  grid-area: 1 / 9 / 2 / 10;
+  border-left: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-right: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-image: linear-gradient(
+      to bottom,
+      var(--bg-color-border),
+      var(--bg-color)
+    )
+    1;
+}
+.grid-10 {
+  grid-area: 1 / 10 / 2 / 11;
+  border-left: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-right: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-image: linear-gradient(
+      to bottom,
+      var(--bg-color-border),
+      var(--bg-color)
+    )
+    1;
+}
+.grid-11 {
+  grid-area: 1 / 11 / 2 / 12;
+  border-left: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-right: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-image: linear-gradient(
+      to bottom,
+      var(--bg-color-border),
+      var(--bg-color)
+    )
+    1;
+}
+.grid-12 {
+  grid-area: 1 / 12 / 2 / 13;
+  border-left: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-right: 0.25px solid rgba(255, 255, 255, 0.03);
+  border-image: linear-gradient(
+      to bottom,
+      var(--bg-color-border),
+      var(--bg-color)
+    )
+    1;
 }
 
 /* SVG */
@@ -187,7 +367,7 @@ a:hover .logo-email-scroll svg path {
   color: var(--renno-neon);
 }
 .navigation-timezones {
-  font-family: monospace-regular, monospace;
+  font-family: monocode-regular, monospace;
 }
 .timezones-inline {
   display: inline;
@@ -210,7 +390,7 @@ a:hover .logo-email-scroll svg path {
   transition: 0.25s ease;
 }
 .hover-renno-blue-logo a:hover {
-  color: #var(--renno-blue);
+  color: var(--renno-blue);
 }
 .hover-renno-blue-logo::after {
   content: "";
@@ -258,7 +438,7 @@ a:hover .logo-email-scroll svg path {
 /* Hero */
 
 .hero {
-  padding: 7em 0 7em 0;
+  padding: 10em 0 7em 0;
 }
 .hero-wrapper {
   padding: 1em;
@@ -275,8 +455,6 @@ a:hover .logo-email-scroll svg path {
 
 /* Showreel */
 
-.showreel {
-}
 .showreel-wrapper {
   padding: 1em;
 }
@@ -327,11 +505,14 @@ a:hover .logo-email-scroll svg path {
 .case-studies-fineprint {
   grid-area: 1 / 2 / 2 / 12;
   font-size: 0.8em;
-  font-family: monospace-regular, monospace;
+  font-family: monocode-regular, monospace;
   color: var(--renno-alt-text-2);
 }
 .case-studies-copy {
   grid-area: 2 / 2 / 3 / 9;
+}
+.case-studies-content {
+  grid-area: 1 / 3 / 2 / 11;
 }
 
 /* Companies Section */
@@ -350,6 +531,10 @@ a:hover .logo-email-scroll svg path {
 
 /* About Me Section */
 
+.about {
+  padding: 6em 0 6em 0;
+}
+
 .about-wrapper {
   padding: 1em;
 }
@@ -358,12 +543,85 @@ a:hover .logo-email-scroll svg path {
   grid-template-columns: repeat(12, 1fr);
   grid-column-gap: 1.5em;
 }
+.about-image {
+  grid-area: 1 / 3 / 2 / 9;
+}
 .about-copy {
-  grid-area: 1 / 5 / 2 / 11;
+  grid-area: 2 / 5 / 3 / 11;
+  padding: 6em 0 0 0;
+}
+
+.card-about-me-index {
+  width: 100%;
+  height: 550px;
+  box-shadow: 0 2px 4px #000000;
+  border-radius: 1em;
+  background-image: url(/img/about/renno-photo-1.jpg);
+  background-size: cover;
+  position: relative;
+  transition-duration: 300ms;
+  transition-property: transform, box-shadow;
+  transition-timing-function: ease-out;
+  transform: rotate3d(0);
+}
+
+.card-about-me-index:hover {
+  transition-duration: 150ms;
+  box-shadow: 0 5px 20px 5px #00000044;
+}
+
+.card-about-me-index:hover::before {
+  opacity: 1;
+}
+
+.card-about-me-index::before,
+.card-about-me-index::after {
+  border-radius: inherit;
+  content: "";
+  height: 100%;
+  left: 0px;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  transition: opacity 500ms;
+  width: 100%;
+}
+
+.card-about-me-index::before {
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.2),
+    transparent 40%
+  );
+  z-index: 3;
+}
+
+.card-about-me-index::after {
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.4),
+    transparent 40%
+  );
+  z-index: 1;
+}
+
+.card-about-me-index > .card-content {
+  background-color: var(--card-color);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  inset: 1px;
+  padding: 10px;
+  position: absolute;
+  z-index: 2;
 }
 
 /* Footer */
 
+footer {
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
 .footer-wrapper {
   padding: 1em;
 }
@@ -375,31 +633,6 @@ a:hover .logo-email-scroll svg path {
 }
 .footer-v-padding {
   padding: 3em 0 0 0;
-}
-
-#about-image-frame {
-  width: 300px;
-  height: 450px;
-  transition: transform 200ms;
-
-  &:hover {
-    transform: scale3d(1.05, 1.05, 1.05);
-  }
-}
-
-#about-image-card {
-  width: 100%;
-  height: 100%;
-  border-radius: 9px;
-  background-image: url("https://djjjk9bjm164h.cloudfront.net/background3.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
-  position: relative;
-  transition-duration: 250ms;
-  transition-property: transform, box-shadow;
-  transition-timing-function: ease-out;
 }
 
 /* Footer - Mail Section */

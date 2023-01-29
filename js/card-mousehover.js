@@ -1,44 +1,46 @@
-const frame = document.getElementById("frame");
-const card = document.getElementById("card");
-const light = document.getElementById("light");
+const $card = document.querySelector(".card-about-me-index");
+let bounds;
 
-let { x, y, width, height } = frame.getBoundingClientRect();
+function rotateToMouse(e) {
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
+  const leftX = mouseX - bounds.x;
+  const topY = mouseY - bounds.y;
+  const center = {
+    x: leftX - bounds.width / 2,
+    y: topY - bounds.height / 2,
+  };
+  const distance = Math.sqrt(center.x ** 2 + center.y ** 2);
 
-function mouseMove(e) {
-  const left = e.clientX - x;
-  const top = e.clientY - y;
-  const centerX = left - width / 2;
-  const centerY = top - height / 2;
-  const d = Math.sqrt(centerX ** 2 + centerY ** 2);
-
-  card.style.boxShadow = `
-    ${-centerX / 5}px ${-centerY / 10}px 10px rgba(0, 0, 0, 0.2)
+  $card.style.transform = `
+    scale3d(1.03, 1.03, 1.03)
+    rotate3d(
+      ${center.y / 100},
+      ${-center.x / 100},
+      0,
+      ${Math.log(distance) * 2}deg
+    )
   `;
-
-  card.style.transform = `
-    rotate3d(${-centerY / 100}, ${centerX / 100}, 0, ${d / 8}deg)
-  `;
-
-  light.style.backgroundImage = `
-    radial-gradient(circle at ${left}px ${top}px, #00000040, #ffffff00, #ffffff99)
-    `;
 }
 
-frame.addEventListener("mouseenter", () => {
-  frame.addEventListener("mousemove", mouseMove);
+$card.addEventListener("mouseenter", () => {
+  bounds = $card.getBoundingClientRect();
+  document.addEventListener("mousemove", rotateToMouse);
 });
 
-frame.addEventListener("mouseleave", () => {
-  frame.removeEventListener("mousemove", mouseMove);
-  card.style.boxShadow = "";
-  card.style.transform = "";
-  light.style.backgroundImage = "";
+$card.addEventListener("mouseleave", () => {
+  document.removeEventListener("mousemove", rotateToMouse);
+  $card.style.transform = "";
+  $card.style.background = "";
 });
 
-window.addEventListener("resize", () => {
-  rect = frame.getBoundingClientRect();
-  x = rect.x;
-  y = rect.y;
-  width = rect.width;
-  height = rect.height;
-});
+document.getElementById("card-mousehover-glow").onmousemove = (e) => {
+  for (const card of document.getElementsByClassName("card-about-me-index")) {
+    const rect = card.getBoundingClientRect(),
+      x = e.clientX - rect.left,
+      y = e.clientY - rect.top;
+
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
+  }
+};

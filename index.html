@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <!-- Google Analytics -->
+    <script></script>
     <title>Renno Riyadi</title>
     <!-- Meta Tags-->
     <meta
@@ -30,11 +31,26 @@
     <!-- Link Tags-->
     <link rel="stylesheet" href="css/style.css" />
     <!-- Script Tag-->
-    <script src="https://moment.github.io/luxon/global/luxon.min.js"></script>
-    <script scr="js/renno-timezone.js"></script>
-    <script src="js/card-mousehover.js"></script>
+    <script src="js/luxon.min.js"></script>
   </head>
   <body>
+    <div class="css-grids-border-bg">
+      <div class="background-guidelines">
+        <div class="grid-1"></div>
+        <div class="grid-2"></div>
+        <div class="grid-3"></div>
+        <div class="grid-4"></div>
+        <div class="grid-5"></div>
+        <div class="grid-6"></div>
+        <div class="grid-7"></div>
+        <div class="grid-8"></div>
+        <div class="grid-9"></div>
+        <div class="grid-10"></div>
+        <div class="grid-11"></div>
+        <div class="grid-12"></div>
+      </div>
+    </div>
+
     <!-- Navigation Section -->
     <header>
       <nav>
@@ -215,6 +231,7 @@
               Hiya 👋 I'm Renno (reh·now), a multidisciplinary designer
               currently based in Dublin, Ireland.
             </h1>
+            <br />
             <h2>
               Currently a Creative Developer at
               <a href="#"
@@ -232,6 +249,7 @@
                   /></svg
               ></a>
             </h2>
+            <br />
             <h3>
               Previously worked with
               <a href="#"
@@ -332,11 +350,14 @@
     <!-- Case Studies Section -->
 
     <section class="case-studies">
-      <section class="case-studies-wrapper">
-        <article class="case-studies-gridlines">
+      <article class="case-studies-wrapper">
+        <div class="case-studies-gridlines">
           <div class="case-studies-fineprint">
             <p>SELECTED PROJECTS 2015-2023</p>
           </div>
+        </div>
+        <br />
+        <div class="case-studies-gridlines">
           <div class="case-studies-copy">
             <h2>
               Curated case studies from work for B2B and B2C channels with
@@ -345,14 +366,16 @@
               advertising, and augmented reality (AR).
             </h2>
           </div>
-          <div class="companies-content">
+        </div>
+        <div class="case-studies-gridlines">
+          <div class="case-studies-content">
             <article></article>
             <article></article>
             <article></article>
             <article></article>
           </div>
-        </article>
-      </section>
+        </div>
+      </article>
     </section>
 
     <!-- Companies Section -->
@@ -376,13 +399,13 @@
     <!-- About Me Section -->
 
     <section class="about">
-      <section class="about-wrapper">
-        <article class="about-gridlines">
-          <div class="about-image">
-            <div id="about-image-frame">
-              <div id="about-image-card"></div>
-            </div>
+      <article class="about-wrapper">
+        <div class="about-gridlines">
+          <div class="about-image" id="card-mousehover-glow">
+            <div class="card-about-me-index"></div>
           </div>
+        </div>
+        <div class="about-gridlines">
           <div class="about-copy">
             <h2>
               I enjoy my daily walks, Formula 1, and mindlessly scrolling on my
@@ -390,6 +413,7 @@
               to think that I make a mean katsu curry.
               <br />
             </h2>
+            <br />
             <h3>
               <a href="#"
                 >About Me<svg
@@ -408,15 +432,9 @@
               </a>
             </h3>
           </div>
-        </article>
-      </section>
+        </div>
+      </article>
     </section>
-
-    <div id="frame">
-      <div id="card">
-        <div id="light"></div>
-      </div>
-    </div>
 
     <!-- Footer -->
 
@@ -645,4 +663,7 @@
       </section>
     </footer>
   </body>
+  <script src="js/renno-timezone.js"></script>
+  <script src="js/card-mousehover.js"></script>
+  <script src="js/gradient-mousehover.js"></script>
 </html>

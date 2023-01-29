@@ -22,14 +22,3 @@ updateTimes();
 setInterval(function () {
   updateTimes();
 }, 1000);
-
-document.getElementById("case-studies-gridlines").onmousemove = (e) => {
-  for (const card of document.getElementsByClassName("case-studies-card")) {
-    const rect = card.getBoundingClientRect(),
-      x = e.clientX - rect.left,
-      y = e.clientY - rect.top;
-
-    card.style.setProperty("--mouse-x", `${x}px`);
-    card.style.setProperty("--mouse-y", `${y}px`);
-  }
-};
