@@ -8,10 +8,10 @@
   src: url("https://raw.githubusercontent.com/riyadirenno/portfolio/master/fonts/monocode-regular.ttf");
 }
 :root {
-  --bg-color: rgb(8, 12, 23);
-  --bg-color-gradient: rgb(4, 8, 20);
-  --bg-color-border: rgb(12, 14, 35);
-  --card-color: rgb(23, 23, 23);
+  --bg-color: rgb(8, 12, 25);
+  --bg-color-gradient: rgb(25, 8, 20);
+  --bg-color-border: rgba(11, 17, 32, 0.3);
+  --card-color: rgb(11, 17, 32);
   --header-colour: rgba(255, 255, 255, 0);
   --renno-blue: rgb(158, 211, 222);
   --renno-neon: rgb(213, 234, 5);
@@ -28,19 +28,22 @@
   --github: rgb(110, 84, 148);
   --vimeo: rgb(26, 183, 234);
   --readcv: rgb(255, 241, 130);
+  --size: clamp(10rem, 1rem + 40vmin, 16rem);
+  --gap: calc(var(--size) / 14);
+  --duration: 60s;
+  --scroll-start: 0;
+  --scroll-end: calc(-100% - var(--gap));
 }
 
 /* Global Settings */
-
 html {
-  min-height: 100%; /* make sure it is at least as tall as the viewport */
+  min-height: 100%;
   position: relative;
 }
-
 body {
   background: radial-gradient(
     circle,
-    var(--bg-color) 33%,
+    var(--bg-color) 23%,
     var(--bg-color-gradient) 100%
   );
   background-color: var(--bg-color);
@@ -440,6 +443,17 @@ a:hover .logo-email-scroll svg path {
 .hero {
   padding: 10em 0 7em 0;
 }
+.index-hover {
+  color: var(--renno-blue);
+  text-decoration: underline 2px solid var(--renno-blue);
+  text-underline-offset: 9px;
+}
+.index-hover:hover {
+  color: var(--renno-neon);
+  text-decoration: underline 2px solid var(--renno-neon);
+  text-underline-offset: 9px;
+  transition: 0.25s ease;
+}
 .hero-wrapper {
   padding: 1em;
 }
@@ -467,8 +481,17 @@ a:hover .logo-email-scroll svg path {
 .showreel-video {
   grid-area: 1 / 1 / 2 / 13;
 }
+video {
+  border-radius: 1em;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
 .showreel-external {
   grid-area: 1 / 9 / 2 / 12;
+  padding: 2em 0 0 0;
 }
 .showreel-external p a:hover {
   color: #1ab7ea;
@@ -528,6 +551,101 @@ a:hover .logo-email-scroll svg path {
 .companies-copy {
   grid-area: 1 / 3 / 2 / 10;
 }
+.companies-content {
+  padding: 6em 0 0 0;
+}
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+  mask-image: linear-gradient(
+    var(--mask-direction, to right),
+    hsl(0 0% 0% / 0),
+    hsl(0 0% 0% / 1) 20%,
+    hsl(0 0% 0% / 1) 80%,
+    hsl(0 0% 0% / 0)
+  );
+}
+
+.marquee__group {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--gap);
+  min-width: 100%;
+  animation: scroll-x var(--duration) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__group {
+    animation-play-state: paused;
+  }
+}
+
+.marquee--vertical {
+  --mask-direction: to bottom;
+}
+
+.marquee--vertical,
+.marquee--vertical .marquee__group {
+  flex-direction: column;
+}
+
+.marquee--vertical .marquee__group {
+  animation-name: scroll-y;
+}
+
+.marquee--reverse .marquee__group {
+  animation-direction: reverse;
+  animation-delay: -3s;
+}
+
+@keyframes scroll-x {
+  from {
+    transform: translateX(var(--scroll-start));
+  }
+  to {
+    transform: translateX(var(--scroll-end));
+  }
+}
+
+@keyframes scroll-y {
+  from {
+    transform: translateY(var(--scroll-start));
+  }
+  to {
+    transform: translateY(var(--scroll-end));
+  }
+}
+
+.marquee svg {
+  display: grid;
+  place-items: center;
+  width: var(--size);
+  fill: var(--renno-white);
+  background: var(--card-color);
+  aspect-ratio: 16/9;
+  padding: calc(var(--size) / 10);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.marquee--vertical svg {
+  aspect-ratio: 1;
+  width: calc(var(--size) / 1.5);
+  padding: calc(var(--size) / 6);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  margin: auto;
+  max-width: 99vw;
+}
 
 /* About Me Section */
 
@@ -556,7 +674,7 @@ a:hover .logo-email-scroll svg path {
   height: 550px;
   box-shadow: 0 2px 4px #000000;
   border-radius: 1em;
-  background-image: url(img/about/renno-photo-1.jpg);
+  background-image: url("../img/about/renno-photo-1.jpg");
   background-size: cover;
   position: relative;
   transition-duration: 300ms;
@@ -621,6 +739,7 @@ a:hover .logo-email-scroll svg path {
 
 footer {
   border: 1px solid rgba(255, 255, 255, 0.04);
+  background-color: var(--bg-color-border);
 }
 .footer-wrapper {
   padding: 1em;
