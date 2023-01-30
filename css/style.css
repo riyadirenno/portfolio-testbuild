@@ -441,7 +441,7 @@ a:hover .logo-email-scroll svg path {
 /* Hero */
 
 .hero {
-  padding: 16em 0 8em 0;
+  padding: 16em 0 10em 0;
 }
 .index-hover {
   color: var(--renno-blue);
@@ -668,7 +668,6 @@ video {
   grid-area: 2 / 5 / 3 / 11;
   padding: 6em 0 0 0;
 }
-
 .card-about-me-index {
   width: 100%;
   height: 550px;
@@ -682,16 +681,13 @@ video {
   transition-timing-function: ease-out;
   transform: rotate3d(0);
 }
-
 .card-about-me-index:hover {
   transition-duration: 150ms;
   box-shadow: 0 5px 20px 5px #00000044;
 }
-
 .card-about-me-index:hover::before {
   opacity: 1;
 }
-
 .card-about-me-index::before,
 .card-about-me-index::after {
   border-radius: inherit;
@@ -704,7 +700,6 @@ video {
   transition: opacity 500ms;
   width: 100%;
 }
-
 .card-about-me-index::before {
   background: radial-gradient(
     800px circle at var(--mouse-x) var(--mouse-y),
@@ -713,7 +708,6 @@ video {
   );
   z-index: 3;
 }
-
 .card-about-me-index::after {
   background: radial-gradient(
     600px circle at var(--mouse-x) var(--mouse-y),
@@ -722,7 +716,6 @@ video {
   );
   z-index: 1;
 }
-
 .card-about-me-index > .card-content {
   background-color: var(--card-color);
   border-radius: inherit;
@@ -916,4 +909,3 @@ a:hover .scroll-top path {
 }
 
 /* Media Queries */
-
